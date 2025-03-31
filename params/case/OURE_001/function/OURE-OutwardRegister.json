@@ -1,0 +1,40 @@
+[
+    {
+        "fieldId": "BUSINE_TYPE",
+        "fieldValue": "1",
+        "type":"select"
+    },
+    {
+        "fieldId": "REFUND_FLG",
+        "fieldValue": "2",
+        "type":"select"
+    },
+    {
+        "fieldId": "REMT_TYPE",
+        "fieldValue": "2",
+        "type":"select"
+    },
+    {
+        "fieldId": "SW_57A_ID_SW",
+        "fieldValue": "${preFuncData}.SW_57A_ID_SW"
+    },
+    {
+        "fieldId": "ORDER_CUST_AC_NO",
+        "fieldValue": "/105201201070002685",
+        "type":"put"
+    },
+    {
+        "fieldId": "SW_56A_ID_SW",
+        "fieldValue": "${preFuncData}.SW_56A_ID_SW"
+    },
+    {
+        "tabId": "IBPD",
+        "tabName": "外管"   
+    },
+    {
+        "fieldId": "RPT_PMT_FLAG",
+        "fieldValue": "4",
+        "type":"select"
+    }
+
+]

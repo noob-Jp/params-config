@@ -1,0 +1,23 @@
+[
+  {
+    "funcKey": "IMLCCreditRegister",
+    "functionStep": "IMLC_CreditRegister2222",
+    "preFuncDataMapping": {
+      "TRX_REF_TEST": "OT2103500010",
+      "C_MAIN_REF_TEST": "${TRX_REF_TEST}"
+    }
+  },
+  {
+    "funcKey": "IMLCIssueLC",
+    "functionStep": "IMLC_IssueLC"
+  },
+  {
+    "funcKey": "IMLCRelease",
+    "functionStep": "IMLC_Release"
+  },
+  {
+    "funcKey": "OURE-OutwardTT",
+    "functionStep": "ss",
+    "preFuncDataMapping": {}
+  }
+]

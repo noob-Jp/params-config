@@ -1,0 +1,12 @@
+[
+  {
+    "funcKey": "OURE-PCRelease",
+    "functionStep": "aaa2",
+    "preFuncDataMapping": {}
+  },
+  {
+    "funcKey": "IMLCCreditRegister",
+    "functionStep": "bbb",
+    "preFuncDataMapping": {}
+  }
+]

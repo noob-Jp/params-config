@@ -1,0 +1,26 @@
+[
+  {
+    "funcKey": "OURE-OutwardRegister",
+    "functionStep": "OURE-OutwardRegister"
+  },
+  {
+    "funcKey": "OURE-TSPRelease",
+    "functionStep": "OURE-TSPRelease"
+  },
+  {
+    "funcKey": "OURE-OutwardTT",
+    "functionStep": "OURE-OutwardTT"
+  },
+  {
+    "funcKey": "OURE-PCRelease",
+    "functionStep": "OURE-PCRelease"
+  },
+  {
+    "funcKey": "OURE-PCAuth-1",
+    "functionStep": "OURE-PCAuth-1"
+  },
+  {
+    "funcKey": "OURE-PCAuth-2",
+    "functionStep": "OURE-PCAuth-2"
+  }
+]

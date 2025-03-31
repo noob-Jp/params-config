@@ -1,0 +1,65 @@
+[
+  {
+    "funcKey": "IMLCCreditRegister",
+    "entryPath": "MenuTree.IMLC.F05030700553",
+    "funcType": "TSP_PM",
+    "catelogId": "",
+    "catelogMappingKey": ""
+  },
+  {
+    "funcKey": "IMLCIssueLC",
+    "entryPath": "MenuTree.IMLC.F05030700873",
+    "funcType": "TSP_PM",
+    "catelogId": "OP2",
+    "catelogMappingKey": "C_MAIN_REF"
+  },
+  {
+    "funcKey": "IMLCRelease",
+    "entryPath": "WorkingList.Release",
+    "funcType": "TSP_RE",
+    "catelogId": "jqg1",
+    "catelogMappingKey": "C_MAIN_REF"
+  },
+  {
+    "funcKey": "OURE-OutwardRegister",
+    "entryPath": "WorkingList.FixPending",
+    "funcType": "TSP_PM",
+    "catelogId": "jqg1",
+    "catelogMappingKey": "C_MAIN_REF"
+  },
+  {
+    "funcKey": "OURE-TSPRelease",
+    "entryPath": "WorkingList.Release",
+    "funcType": "TSP_RE",
+    "catelogId": "jqg1",
+    "catelogMappingKey": "C_MAIN_REF"
+  },
+  {
+    "funcKey": "OURE-OutwardTT",
+    "entryPath": "WorkingList.Pending",
+    "funcType": "PC_PM",
+    "catelogId": "jqg1",
+    "catelogMappingKey": "C_MAIN_REF"
+  },
+  {
+    "funcKey": "OURE-PCRelease",
+    "entryPath": "WorkingList.Release",
+    "funcType": "PC_RE",
+    "catelogId": "jqg1",
+    "catelogMappingKey": "C_MAIN_REF"
+  },
+  {
+    "funcKey": "OURE-PCAuth-1",
+    "entryPath": "WorkingList.Auth",
+    "funcType": "PC_PM",
+    "catelogId": "jqg1",
+    "catelogMappingKey": "C_MAIN_REF"
+  },
+  {
+    "funcKey": "OURE-PCAuth-2",
+    "entryPath": "WorkingList.Auth",
+    "funcType": "PC_RE",
+    "catelogId": "jqg1",
+    "catelogMappingKey": "C_MAIN_REF"
+  }
+]

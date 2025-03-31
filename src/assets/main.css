@@ -1,0 +1,16 @@
+@import './base.css';
+
+#app {
+  width: 100%;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: #2D64F0;
+  transition: 0.4s;
+}
+
+.el-table .cell {
+  word-break: break-word;
+} 

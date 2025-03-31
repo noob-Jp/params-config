@@ -1,0 +1,39 @@
+[
+    {
+        "fieldId": "BENE_CODE",
+        "fieldValue": "CHN"
+    },
+    {
+        "fieldId": "SW_FLG",
+        "fieldValue": "SWIFT"
+    },
+    {
+        "fieldId": "CABLE_FLG",
+        "fieldValue": "3"
+    },
+    {
+        "tabId": "E",
+        "tabName": "Deduct"   
+    },
+    {
+        "type": "click",
+        "fieldId": "PMT_CUST_AC_NO1"
+    },
+    {
+        "fieldId": "PMT_ACNOS1",
+        "fieldValue": "${preFuncData}.PAY_ACNO1",
+        "exact": false
+    },
+    {
+        "tabId": "J",
+        "tabName": "外管"   
+    },
+    {
+        "fieldId": "RPT_PMT_FLAG",
+        "fieldValue": "3"
+    },
+    {
+        "fieldId": "IBPD_JNJW_FLG",
+        "fieldValue": "2"
+    }
+]

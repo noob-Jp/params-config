@@ -1,0 +1,22 @@
+[
+  {
+    "tabName": "Main",
+    "tabId": "A"
+  },
+  {
+    "fieldValue": "035001",
+    "fieldId": "GTS_BR_ID"
+  },
+  {
+    "fieldValue": "3.12",
+    "fieldId": "LC_AMT"
+  },
+  {
+    "fieldValue": "18181818",
+    "fieldId": "APPL_ID"
+  },
+  {
+    "fieldValue": "1",
+    "fieldId": "INST_ATTRIBUTE_0"
+  }
+]
