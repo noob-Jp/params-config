@@ -145,7 +145,13 @@ import {
   Plus, 
   List, 
   Setting, 
-  Management 
+  Management,
+  Edit,
+  Search,
+  Monitor,
+  Histogram,
+  Refresh,
+  View
 } from '@element-plus/icons-vue'
 import { getCaseList } from '../api/caseApi'
 import { getFunctionList } from '../api/functionApi'
@@ -158,6 +164,16 @@ export default {
     Connection,
     Link,
     DataLine,
+    Plus,
+    List,
+    Setting,
+    Management,
+    Edit,
+    Search,
+    Monitor,
+    Histogram,
+    Refresh,
+    View,
     DataVisualization
   },
   setup() {
@@ -178,8 +194,7 @@ export default {
     const quickAccessItems = [
       { title: '创建新案例', path: '/case/new', icon: 'Plus' },
       { title: '案例列表', path: '/cases', icon: 'List' },
-      { title: '功能列表', path: '/functions', icon: 'Connection' },
-      { title: '系统设置', path: '/settings', icon: 'Setting' }
+      { title: '功能列表', path: '/functions', icon: 'Connection' }
     ]
 
     // 加载数据
