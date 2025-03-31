@@ -177,7 +177,7 @@ export default {
     // 快速访问项
     const quickAccessItems = [
       { title: '创建新案例', path: '/case/new', icon: 'Plus' },
-      { title: '案例列表', path: '/', icon: 'List' },
+      { title: '案例列表', path: '/cases', icon: 'List' },
       { title: '功能列表', path: '/functions', icon: 'Connection' },
       { title: '系统设置', path: '/settings', icon: 'Setting' }
     ]
