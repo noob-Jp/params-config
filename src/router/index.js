@@ -4,13 +4,19 @@ import CaseEdit from '../views/CaseEdit.vue'
 import FunctionEdit from '../views/FunctionEdit.vue'
 import HookEdit from '../views/HookEdit.vue'
 import FunctionList from '../views/FunctionList.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/cases',
+      name: 'caseList',
       component: CaseList
     },
     {
@@ -46,4 +52,4 @@ const router = createRouter({
   ]
 })
 
-export default router 
+export default router

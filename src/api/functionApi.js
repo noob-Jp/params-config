@@ -173,4 +173,15 @@ export async function exportCase(caseName) {
     console.error('导出案例失败:', error)
     throw error
   }
-} 
+}
+
+// 获取功能列表
+export async function getFunctionList() {
+  try {
+    const response = await axios.get(`${API_URL}/functions`)
+    return response.data || []
+  } catch (error) {
+    console.error('获取功能列表失败:', error)
+    return []
+  }
+}

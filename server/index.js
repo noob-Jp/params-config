@@ -7,6 +7,12 @@ const app = express()
 const PORT = process.env.PORT || 3000
 const PARAMS_DIR = path.join(process.cwd(), 'params')
 
+// 添加调试信息
+console.log('当前工作目录:', process.cwd())
+console.log('PARAMS_DIR路径:', PARAMS_DIR)
+console.log('PARAMS_DIR是否存在:', require('fs').existsSync(PARAMS_DIR))
+console.log('PARAMS_DIR/case是否存在:', require('fs').existsSync(path.join(PARAMS_DIR, 'case')))
+
 app.use(bodyParser.json())
 app.use(express.static(path.join(process.cwd(), 'dist')))
 
@@ -14,7 +20,19 @@ app.use(express.static(path.join(process.cwd(), 'dist')))
 app.get('/api/cases', async (req, res) => {
   try {
     const casesDir = path.join(PARAMS_DIR, 'case')
+    console.log('尝试读取案例目录:', casesDir)
+    
+    // 检查目录是否存在
+    try {
+      await fs.access(casesDir)
+      console.log('案例目录存在')
+    } catch (err) {
+      console.error('案例目录不存在:', err.message)
+      return res.status(404).json({ error: '案例目录不存在' })
+    }
+    
     const cases = await fs.readdir(casesDir)
+    console.log('读取到案例列表:', cases)
     
     const caseList = await Promise.all(cases.map(async (caseName) => {
       const caseFile = path.join(casesDir, caseName, 'case.json')
@@ -68,18 +86,16 @@ app.get('/api/cases/:caseName', async (req, res) => {
 app.get('/api/functions', async (req, res) => {
   try {
     const funcListFile = path.join(PARAMS_DIR, 'funcList.json')
+    let funcList = []
     
-    // 如果funcList.json不存在，创建一个空的
     try {
-      await fs.access(funcListFile)
+      const data = await fs.readFile(funcListFile, 'utf-8')
+      funcList = JSON.parse(data)
     } catch (err) {
-      // 文件不存在，创建一个空的功能列表
-      await fs.mkdir(path.dirname(funcListFile), { recursive: true })
-      await fs.writeFile(funcListFile, JSON.stringify([], null, 2))
+      // 如果文件不存在或解析失败，返回空数组
+      console.log('功能列表文件不存在或解析失败，返回空数组')
     }
     
-    // 读取功能列表
-    const funcList = JSON.parse(await fs.readFile(funcListFile, 'utf-8'))
     res.json(funcList)
   } catch (err) {
     res.status(500).json({ error: err.message })
