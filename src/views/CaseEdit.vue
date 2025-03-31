@@ -90,17 +90,32 @@
       </el-table-column>
       <el-table-column label="功能步骤名称" min-width="200">
         <template #default="scope">
-          <el-input 
-            v-model="scope.row.functionStep" 
-            placeholder="步骤名称"
-            size="small"
-            clearable
-            :class="{'is-warning': !scope.row.functionStep}"
+          <div v-if="currentEditingIndex === scope.$index" class="step-name-editor">
+            <el-input 
+              v-model="tempStepName" 
+              placeholder="步骤名称"
+              size="small"
+              clearable
+              :class="{'is-warning': !tempStepName}"
+              @blur="saveStepName(scope.$index)"
+              @keyup.enter="saveStepName(scope.$index)"
+              ref="stepNameInput"
+            >
+              <template #prefix>
+                <el-icon><Document /></el-icon>
+              </template>
+            </el-input>
+          </div>
+          <div 
+            v-else 
+            class="step-name-display"
+            @click="startEditingStepName(scope.row, scope.$index)"
           >
-            <template #prefix>
-              <el-icon><Document /></el-icon>
-            </template>
-          </el-input>
+            <el-icon class="step-name-icon"><Document /></el-icon>
+            <span :class="{'empty-step-name': !scope.row.functionStep}">
+              {{ scope.row.functionStep || '点击编辑步骤名称' }}
+            </span>
+          </div>
         </template>
       </el-table-column>
       <el-table-column label="操作" width="360" fixed="right" align="center">
@@ -190,6 +205,24 @@ export default {
     Plus,
     Rank
   },
+  directives: {
+    'focus-persistent': {
+      // 指令钩子
+      updated(el) {
+        // 如果元素内有input并且处于激活状态，保持焦点
+        const input = el.querySelector('input');
+        if (input && document.activeElement === input) {
+          // 使用setTimeout确保在DOM更新后重新聚焦
+          setTimeout(() => {
+            input.focus();
+            // 尝试保持光标位置
+            const len = input.value.length;
+            input.setSelectionRange(len, len);
+          }, 0);
+        }
+      }
+    }
+  },
   setup() {
     const route = useRoute()
     const router = useRouter()
@@ -197,6 +230,10 @@ export default {
     const isNew = computed(() => caseName.value === 'NewCaseName')
     const caseForm = ref(null)
     const functionTable = ref(null)
+    
+    // 当前正在编辑的功能步骤
+    const currentEditingIndex = ref(-1)
+    const tempStepName = ref('')
     
     const caseData = ref({
       caseName: isNew.value ? `NEW_CASE_NAME_${new Date().getTime()}` : '',
@@ -390,6 +427,26 @@ export default {
       }
     }
 
+    // 开始编辑步骤名称
+    const startEditingStepName = (row, index) => {
+      currentEditingIndex.value = index
+      tempStepName.value = row.functionStep || ''
+      nextTick(() => {
+        const input = document.querySelector('.step-name-editor input')
+        if (input) {
+          input.focus()
+        }
+      })
+    }
+
+    // 保存步骤名称
+    const saveStepName = (index) => {
+      if (caseData.value.functions[index]) {
+        caseData.value.functions[index].functionStep = tempStepName.value || `步骤${index + 1}`
+      }
+      currentEditingIndex.value = -1
+    }
+
     const tableRowClassName = ({ row }) => {
       if (row.functionStep === '步骤1') {
         return 'first-row';
@@ -401,6 +458,8 @@ export default {
       caseName,
       isNew,
       caseData,
+      rules,
+      functionOptions,
       availableFunctions,
       functionOptions,
       caseForm,
@@ -420,10 +479,16 @@ export default {
       addFunction,
       editFunction,
       editHooks,
+      removeFunction,
       confirmRemoveFunction,
       handleExport,
       tableRowClassName,
-      functionTable
+      functionTable,
+      // 步骤名称编辑相关
+      currentEditingIndex,
+      tempStepName,
+      startEditingStepName,
+      saveStepName
     }
   }
 }
@@ -642,5 +707,26 @@ export default {
 
 .first-row {
   background-color: #f0f0f0;
+}
+
+.step-name-display {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.step-name-icon {
+  margin-right: 5px;
+  color: #409EFF;
+}
+
+.empty-step-name {
+  color: #909399;
+  font-style: italic;
+}
+
+.step-name-editor {
+  width: 100%;
 }
 </style>
