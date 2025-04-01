@@ -181,18 +181,35 @@ export default {
 
     const saveFunction = async () => {
       try {
-        // 简单验证
-        for (const operation of functionData.value) {
+        // 增强验证
+        for (let i = 0; i < functionData.value.length; i++) {
+          const operation = functionData.value[i];
+          
+          // 检查必填字段
           if (!operation.operationId) {
-            ElMessage.warning('操作ID不能为空')
+            ElMessage.warning(`第${i+1}行操作ID不能为空`)
             return
           }
           if (!operation.operationName) {
-            ElMessage.warning('操作名称不能为空')
+            ElMessage.warning(`第${i+1}行操作名称不能为空`)
+            return
+          }
+          if (!operation.operationType) {
+            ElMessage.warning(`第${i+1}行操作类型不能为空`)
             return
           }
           if (!operation.targetElement) {
-            ElMessage.warning('目标元素不能为空')
+            ElMessage.warning(`第${i+1}行目标元素不能为空`)
+            return
+          }
+          
+          // 根据操作类型检查额外必填字段
+          if (operation.operationType === 'input' && !operation.operationValue) {
+            ElMessage.warning(`第${i+1}行输入操作的操作值不能为空`)
+            return
+          }
+          if (operation.operationType === 'select' && !operation.operationValue) {
+            ElMessage.warning(`第${i+1}行选择操作的操作值不能为空`)
             return
           }
         }

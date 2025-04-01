@@ -5,6 +5,7 @@ import FunctionEdit from '../views/FunctionEdit.vue'
 import HookEdit from '../views/HookEdit.vue'
 import FunctionList from '../views/FunctionList.vue'
 import Dashboard from '../views/Dashboard.vue'
+import Settings from '../views/Settings.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,6 +49,11 @@ const router = createRouter({
       path: '/functions',
       name: 'functionList',
       component: FunctionList
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings
     }
   ]
 })

@@ -73,7 +73,7 @@ body {
 }
 
 .el-header {
-  background-color: #2D64F0;
+  background-color: var(--el-color-primary, #2D64F0);
   color: white;
   display: flex;
   align-items: center;

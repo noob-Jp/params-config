@@ -40,6 +40,11 @@
           <span>新建案例</span>
         </el-menu-item>
       </el-sub-menu>
+
+      <el-menu-item index="/settings">
+        <el-icon><Setting /></el-icon>
+        <template #title>系统设置</template>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
